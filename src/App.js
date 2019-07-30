@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled, { createGlobalStyle } from 'styled-components'
+import Conversation from './components/Conversation';
+
+
+const GlobalStyles = createGlobalStyle`
+  html, body, #root, .App {
+    height: 100%;
+  }
+  html {
+    background-color: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+  }
+  body {
+    background-color: #ffffff;
+    width: 61.2rem;
+    margin: 0 auto;
+  }
+`
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyles />
+      <Conversation />  
     </div>
   );
 }

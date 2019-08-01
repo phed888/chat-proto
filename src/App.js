@@ -1,7 +1,6 @@
-import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components'
-import Conversation from './components/Conversation';
-
+import React from "react";
+import { createGlobalStyle } from "styled-components";
+import Conversation from "./components/Conversation";
 
 const GlobalStyles = createGlobalStyle`
   html, body, #root, .App {
@@ -17,13 +16,13 @@ const GlobalStyles = createGlobalStyle`
     width: 61.2rem;
     margin: 0 auto;
   }
-`
+`;
 
 function App() {
   return (
     <div className="App">
       <GlobalStyles />
-      <Conversation />  
+      <Conversation />
     </div>
   );
 }

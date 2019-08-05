@@ -11,6 +11,7 @@ const ConversationContainer = styled.div`
     flex-direction: column-reverse;
     font-size: 1.4rem;
     padding: 1.6rem;
+    background-color: #ffffff;
     .incoming,
     .outgoing {
       display: flex;
@@ -161,19 +162,27 @@ export default function Conversation() {
   ]);
 
   const msgList = messages.map(msg => (
-    <div className={msg.type} key={msg.index}>
-      <div className="bubble">{msg.content}</div>
-    </div>
+    <>
+      <div className={msg.type} key={msg.index}>
+        <div className="bubble">{msg.content}</div>
+      </div>
+      <div classNeme="scrollIntoView"></div>
+    </>
   ));
+
+  const scrollTo = document.getElementsByClassName("scrollIntoView");
 
   const handleChange = e => {
     return setInput(e.target.value);
   };
 
   const nextQuestion = () => {
-    setMessages([...messages, questions[currentMsg]]);
+    setMessages(prevMessages => [...prevMessages, questions[currentMsg]]);
     currentMsg++;
-    console.log(currentKey + " " + currentMsg);
+    scrollTo.scrollIntoView({
+      block: 'end',
+      behavior: 'smooth'
+    });
   };
 
   const handleSubmit = e => {
@@ -181,10 +190,14 @@ export default function Conversation() {
     e.preventDefault();
     if (input !== "") {
       const newMessage = { key: currentKey, content: input, type: "outgoing" };
-      setMessages([...messages, newMessage]);
+      setMessages(prevMessages => [...prevMessages, newMessage]);
       currentKey++;
       setInput("");
-      setTimeout(nextQuestion, 2000);
+      setTimeout(nextQuestion, 500);
+      scrollTo.scrollIntoView({
+        block: 'end',
+        behavior: 'smooth'
+      });
     }
   };
 

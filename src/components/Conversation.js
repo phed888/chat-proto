@@ -47,7 +47,6 @@ export default function Conversation() {
         <div className="message">
           <div className="bubble">{msg.content}</div>
         </div>
-
         {msg.quickReplies.length > 0 && (
           <div className="button-container">
             {msg.quickReplies.map(reply => (

@@ -41,6 +41,20 @@ export default function Conversation() {
     }
   ]);
 
+  const handleQRClick = e => {
+    e.preventDefault();
+    const newMessage = {
+      key: currentKey,
+      content: e.target.innerText,
+      type: "outgoing",
+      quickReplies: []
+    };
+    setMessages(prevMessages => [...prevMessages, newMessage]);
+    currentKey++;
+    setInput("");
+    setTimeout(nextQuestion, 800);
+  };
+
   const msgList = messages.map(msg => (
     <>
       <div className={msg.type} key={msg.index}>
@@ -50,7 +64,9 @@ export default function Conversation() {
         {msg.quickReplies.length > 0 && (
           <div className="button-container">
             {msg.quickReplies.map(reply => (
-              <button className="quickReply">{reply}</button>
+              <button className="quickReply" onClick={handleQRClick}>
+                {reply}
+              </button>
             ))}
           </div>
         )}
@@ -82,7 +98,7 @@ export default function Conversation() {
       setMessages(prevMessages => [...prevMessages, newMessage]);
       currentKey++;
       setInput("");
-      setTimeout(nextQuestion, 500);
+      setTimeout(nextQuestion, 800);
     }
   };
 

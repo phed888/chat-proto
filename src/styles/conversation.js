@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
 export const ConversationContainer = styled.div`
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   .conversation {
     flex-grow: 1;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     font-size: 1.4rem;
     padding: 1.6rem;
     background-color: #ffffff;
+    overflow-y: scroll;
     .incoming,
     .outgoing {
       display: flex;

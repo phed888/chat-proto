@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ConversationContainer } from "../styles/conversation";
-import { questions } from "../data/conversation";
+import { questions, srsummary } from "../data/conversation";
 
 let currentMsg = 0;
 let currentKey = 100;
@@ -17,29 +17,7 @@ export default function Conversation() {
 
   const [input, setInput] = useState("");
 
-  const [messages, setMessages] = useState([
-    {
-      index: 0,
-      content:
-        "What happened: Chachi Arredondo called on Aug 4, 2019 to cancel their stay at Hotel Theodore, Seattle during Aug 11, 2019 - Aug 14, 2019, due to medical emergency.  (Itinerary: 1234567890123)",
-      type: "incoming",
-      quickReplies: []
-    },
-    {
-      index: 1,
-      content:
-        "What to do: Call the Hotel Theodore, Seattle and ask Anje Keizer, General Manager to approve the waiver for this cancellation.",
-      type: "incoming",
-      quickReplies: []
-    },
-    {
-      index: 2,
-      content:
-        "Please note: This is the first out of 3 attempts to get the waiver",
-      type: "incoming",
-      quickReplies: ["Call hotel"]
-    }
-  ]);
+  const [messages, setMessages] = useState( srsummary );
 
   const handleQRClick = e => {
     e.preventDefault();
@@ -106,12 +84,12 @@ export default function Conversation() {
     <ConversationContainer>
       <div className="conversation">
         <div className="bubbles">{msgList}</div>
+        <div ref={scrollTarget} />
       </div>
       <form className="sendMessage" onSubmit={handleSubmit}>
         <input type="text" onChange={handleChange} value={input} />
         <button type="submit">Send</button>
       </form>
-      <div ref={scrollTarget} />
     </ConversationContainer>
   );
 }

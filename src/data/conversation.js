@@ -31,3 +31,29 @@ export const questions = [
     quickReplies: []
   }
 ];
+
+
+export const srsummary = [
+  {
+    index: 0,
+    content:
+      "What happened: Chachi Arredondo called on Aug 4, 2019 to cancel their stay at Hotel Theodore, Seattle during Aug 11, 2019 - Aug 14, 2019, due to medical emergency.  (Itinerary: 1234567890123)",
+    type: "incoming",
+    quickReplies: []
+  },
+  {
+    index: 1,
+    content:
+      "What to do: Call the Hotel Theodore, Seattle and ask Anje Keizer, General Manager to approve the waiver for this cancellation.",
+    type: "incoming",
+    quickReplies: []
+  },
+  {
+    index: 2,
+    content:
+      "Please note: This is the first out of 3 attempts to get the waiver",
+    type: "incoming",
+    quickReplies: ["Call hotel"]
+  }
+];
+

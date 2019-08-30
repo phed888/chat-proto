@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ConversationContainer } from "../styles/conversation";
 import { questions, srsummary } from "../data/conversation";
+import moment from "moment";
 
 let currentMsg = 0;
 let currentKey = 100;
@@ -17,7 +18,7 @@ export default function Conversation() {
 
   const [input, setInput] = useState("");
 
-  const [messages, setMessages] = useState( srsummary );
+  const [messages, setMessages] = useState(srsummary);
 
   const handleQRClick = e => {
     e.preventDefault();
@@ -37,7 +38,11 @@ export default function Conversation() {
     <>
       <div className={msg.type} key={msg.index}>
         <div className="message">
-          <div className="bubble">{msg.content}</div>
+          <div className="utterance">{msg.content}</div>
+        </div>
+        <div className="time-stamp">
+          <span className="sender">Bob</span>
+          {moment().format("D MMM YYYY")}
         </div>
         {msg.quickReplies.length > 0 && (
           <div className="button-container">

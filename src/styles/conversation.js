@@ -23,12 +23,28 @@ export const ConversationContainer = styled.div`
         display: flex;
         flex-direction: row;
       }
-      .bubble {
+      .utterance {
         max-width: 67%;
         padding: 1.2rem 1.6rem 1rem;
+        position: relative;
       }
-      &:last-child {
+      .time-stamp {
+        display: none;
+        font-size: 1.2rem;
+        color: #00001e;
+        opacity: 0.6;
+        .sender {
+          font-weight: bold;
+          opacity: 1;
+          margin-right: 0.4rem;
+        }
+      }
+      &:last-child,
+      &:only-child {
         margin-bottom: 0;
+        .time-stamp {
+          display: block;
+        }
       }
     }
     .incoming {
@@ -39,7 +55,10 @@ export const ConversationContainer = styled.div`
       .message {
         justify-content: flex-start;
       }
-      .bubble {
+      .time-stamp {
+        margin-left: 3.6rem;
+      }
+      .utterance {
         background-color: #eeeeee;
         margin: 0 0 0.2rem 3.6rem;
         &:first-child {
@@ -54,7 +73,7 @@ export const ConversationContainer = styled.div`
             position: absolute;
             height: 2.4rem;
             width: 2.4rem;
-            left: 0;
+            left: -3.2rem;
             bottom: 0;
           }
         }
@@ -72,8 +91,8 @@ export const ConversationContainer = styled.div`
       .message {
         justify-content: flex-end;
       }
-      .bubble {
-        background-color: #ff0000;
+      .utterance {
+        background-color: #dfe0f3;
         margin: 0 3.6rem 0.2rem 0;
         &:first-child {
           margin-top: 0.8rem;
@@ -83,12 +102,12 @@ export const ConversationContainer = styled.div`
           border-radius: 0.8rem 0 0.8rem 0.8rem;
           &:after {
             content: "";
-            background-color: #ff0000;
+            background-color: #dfe0f3;
             border-radius: 10rem;
             position: absolute;
             height: 2.4rem;
             width: 2.4rem;
-            right: 0rem;
+            right: -3.2rem;
             bottom: 0;
           }
         }
@@ -108,13 +127,15 @@ export const ConversationContainer = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px solid blue;
+        border: 2px solid #0464ee;
+        color: #0464ee;
         height: 4rem;
         border-radius: 2rem;
         font-size: 1.4rem;
         background-color: #ffffff;
         min-width: 6rem;
         margin-right: 0.8rem;
+        padding: 0 1.6rem;
       }
     }
   }
